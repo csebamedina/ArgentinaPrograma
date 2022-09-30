@@ -7,7 +7,8 @@ import { Experiencia } from '../model/experiencia';
   providedIn: 'root'
 })
 export class SExperienciaService {
-  expURL = 'http://localhost:8080/explab/'
+  expURL = 'https://bkdargentinaprograma.herokuapp.com/explab/';
+
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<Experiencia[]>{
@@ -15,8 +16,8 @@ export class SExperienciaService {
   }
 
   public detail(id: number): Observable<Experiencia>{
-    return this.httpClient.get<Experiencia>(this.expURL + `detail/${id}`)
-  }
+    return this.httpClient.get<Experiencia>(this.expURL + `detail/${id}`);
+  } 
 
   public save(experiencia: Experiencia): Observable<any>{
     return this.httpClient.post<any>(this.expURL + 'create', experiencia);
